@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>SQL Injection como previnir ? // Web AppSec Engineer</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.139.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="/css/main.min.5b1fcc8902588589c4767187402a3c29f8b8d7a6fdef6d9f8f77045bb0d14fee.css" />
+    
+
+    
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="SQL Injection como previnir ?">
+  <meta name="twitter:description" content="SQL Injection SQL Injection é uma vulnerabilidade que ocorre quando um aplicativo permite que dados de entrada do usuário sejam incorporados em consultas SQL sem validação ou sanitização adequada. Isso permite que um atacante manipule a consulta SQL para acessar ou modificar informações não autorizadas no banco de dados.
+Como Funciona? Entrada do Usuário Não Segura: O aplicativo constrói consultas SQL concatenando strings diretamente a partir de entradas do usuário. Manipulação de Consultas: O atacante insere comandos SQL maliciosos na entrada do usuário. Impacto: Vazamento de dados sensíveis. Modificação ou exclusão de dados. Controle total do banco de dados em alguns casos. Exemplo de Falha: Código Vulnerável (JavaScript com Node.js): const express = require(&#39;express&#39;); const mysql = require(&#39;mysql&#39;); const app = express(); const connection = mysql.createConnection({ host: &#39;localhost&#39;, user: &#39;root&#39;, password: &#39;password&#39;, database: &#39;testdb&#39; }); app.get(&#39;/login&#39;, (req, res) =&gt; { const username = req.query.username; const password = req.query.password; // Consulta SQL vulnerável const query = `SELECT * FROM users WHERE username = &#39;${username}&#39; AND password = &#39;${password}&#39;`; connection.query(query, (err, results) =&gt; { if (err) throw err; if (results.length &gt; 0) { res.send(&#34;Login bem-sucedido!&#34;); } else { res.send(&#34;Credenciais inválidas!&#34;); } }); }); app.listen(3000); Exploração:">
+
+    <meta property="og:url" content="/vulnerabilities/sql-injection/">
+  <meta property="og:site_name" content="Web AppSec Engineer">
+  <meta property="og:title" content="SQL Injection como previnir ?">
+  <meta property="og:description" content="SQL Injection SQL Injection é uma vulnerabilidade que ocorre quando um aplicativo permite que dados de entrada do usuário sejam incorporados em consultas SQL sem validação ou sanitização adequada. Isso permite que um atacante manipule a consulta SQL para acessar ou modificar informações não autorizadas no banco de dados.
+Como Funciona? Entrada do Usuário Não Segura: O aplicativo constrói consultas SQL concatenando strings diretamente a partir de entradas do usuário. Manipulação de Consultas: O atacante insere comandos SQL maliciosos na entrada do usuário. Impacto: Vazamento de dados sensíveis. Modificação ou exclusão de dados. Controle total do banco de dados em alguns casos. Exemplo de Falha: Código Vulnerável (JavaScript com Node.js): const express = require(&#39;express&#39;); const mysql = require(&#39;mysql&#39;); const app = express(); const connection = mysql.createConnection({ host: &#39;localhost&#39;, user: &#39;root&#39;, password: &#39;password&#39;, database: &#39;testdb&#39; }); app.get(&#39;/login&#39;, (req, res) =&gt; { const username = req.query.username; const password = req.query.password; // Consulta SQL vulnerável const query = `SELECT * FROM users WHERE username = &#39;${username}&#39; AND password = &#39;${password}&#39;`; connection.query(query, (err, results) =&gt; { if (err) throw err; if (results.length &gt; 0) { res.send(&#34;Login bem-sucedido!&#34;); } else { res.send(&#34;Credenciais inválidas!&#34;); } }); }); app.listen(3000); Exploração:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="vulnerabilities">
+    <meta property="article:published_time" content="2024-09-22T09:03:20-08:00">
+    <meta property="article:modified_time" content="2024-09-22T09:03:20-08:00">
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="/"><img class="app-header-avatar" src="/images/avatar.png" alt="John Doe" /></a>
+      <span class="app-header-title">Web AppSec Engineer</span>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/about/">About</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/">Home</a>
+      </nav>
+      <p>Encontre aqui conteúdo sobre Web Application Security Engineering.</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/sgtux" target="_blank" rel="noreferrer noopener me">
+            <svg class="icon icon-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>github</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </a>
+        
+          <a href="https://www.linkedin.com/in/sgtux/" target="_blank" rel="noreferrer noopener me">
+            <svg class="icon icon-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>linkedin</title><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">SQL Injection como previnir ?</h1>
+      <div class="post-meta">
+        <div>
+          <svg class="icon icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          Sep 22, 2024
+        </div>
+        <div>
+          <svg class="icon icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>clock</title><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          3 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h1 id="sql-injection">SQL Injection</h1>
+<p>SQL Injection é uma vulnerabilidade que ocorre quando um aplicativo permite que dados de entrada do usuário sejam incorporados em consultas SQL sem validação ou sanitização adequada. Isso permite que um atacante manipule a consulta SQL para acessar ou modificar informações não autorizadas no banco de dados.</p>
+<h3 id="como-funciona">Como Funciona?</h3>
+<ol>
+<li>Entrada do Usuário Não Segura: O aplicativo constrói consultas SQL concatenando strings diretamente a partir de entradas do usuário.</li>
+<li>Manipulação de Consultas: O atacante insere comandos SQL maliciosos na entrada do usuário.</li>
+<li>Impacto:
+<ul>
+<li>Vazamento de dados sensíveis.</li>
+<li>Modificação ou exclusão de dados.</li>
+<li>Controle total do banco de dados em alguns casos.</li>
+</ul>
+</li>
+</ol>
+<h2 id="exemplo-de-falha">Exemplo de Falha:</h2>
+<h3 id="código-vulnerável-javascript-com-nodejs">Código Vulnerável (JavaScript com Node.js):</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;express&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mysql</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;mysql&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">connection</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql</span>.<span style="color:#a6e22e">createConnection</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">host</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;localhost&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;root&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">password</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;password&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">database</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;testdb&#39;</span>
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/login&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">username</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">username</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">password</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">password</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Consulta SQL vulnerável
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">query</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`SELECT * FROM users WHERE username = &#39;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">username</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39; AND password = &#39;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">password</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;`</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">connection</span>.<span style="color:#a6e22e">query</span>(<span style="color:#a6e22e">query</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">results</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">err</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">results</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#34;Login bem-sucedido!&#34;</span>);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#34;Credenciais inválidas!&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#ae81ff">3000</span>);
+</span></span></code></pre></div><p>Exploração:</p>
+<ul>
+<li>Entrada do usuário no navegador:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/login?username<span style="color:#f92672">=</span>admin<span style="color:#960050;background-color:#1e0010">&#39;</span>--&amp;password<span style="color:#f92672">=</span>anything
+</span></span></code></pre></div><ul>
+<li>Resultado da consulta SQL:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>SELECT * FROM users WHERE username <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;admin&#39;</span>--<span style="color:#e6db74">&#39; AND password = &#39;</span>anything<span style="color:#960050;background-color:#1e0010">&#39;</span>;
+</span></span></code></pre></div><p>A parte após &ndash; é ignorada, permitindo login sem senha.</p>
+<h2 id="correção">Correção:</h2>
+<ol>
+<li>Usar Consultas Preparadas (Prepared Statements):</li>
+</ol>
+<p>Consultas preparadas tratam automaticamente os dados de entrada como valores, evitando que eles sejam interpretados como comandos SQL.
+Exemplo em Node.js:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/login&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">username</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">username</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">password</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">password</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Consulta segura com parâmetros
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">query</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`SELECT * FROM users WHERE username = ? AND password = ?`</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">connection</span>.<span style="color:#a6e22e">query</span>(<span style="color:#a6e22e">query</span>, [<span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">password</span>], (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">results</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">err</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">results</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#34;Login bem-sucedido!&#34;</span>);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#34;Credenciais inválidas!&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h3 id="2-validar-e-sanitizar-entrada-do-usuário">2. Validar e Sanitizar Entrada do Usuário:</h3>
+<p>Imponha restrições para garantir que os dados estejam no formato esperado.
+Exemplo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">username</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">username</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#e6db74">/^[a-zA-Z0-9_]+$/</span>.<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">username</span>)) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">status</span>(<span style="color:#ae81ff">400</span>).<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#34;Nome de usuário inválido!&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="3-restringir-privilégios-do-banco-de-dados">3. Restringir Privilégios do Banco de Dados:</h3>
+<ul>
+<li>Use contas de banco de dados com o menor privilégio possível.</li>
+<li>Impedir que o aplicativo execute comandos como DROP, ALTER, ou DELETE.</li>
+</ul>
+<h2 id="outro-exemplo-exfiltração-de-dados">Outro Exemplo: Exfiltração de Dados</h2>
+<p>Entrada Maliciosa:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#e6db74">&#39; OR &#39;</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">&#39;=&#39;</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">&#39;; --
+</span></span></span></code></pre></div><p>Consulta Resultante:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> users <span style="color:#66d9ef">WHERE</span> username <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#66d9ef">OR</span> <span style="color:#e6db74">&#39;1&#39;</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;1&#39;</span>; <span style="color:#75715e">-- AND password = &#39;...&#39;;
+</span></span></span></code></pre></div><ul>
+<li>O ataque retorna todos os usuários, já que OR &lsquo;1&rsquo;=&lsquo;1&rsquo; sempre é verdadeiro.</li>
+</ul>
+<h2 id="boas-práticas-para-prevenção">Boas Práticas para Prevenção:</h2>
+<ol>
+<li>Usar <strong>Prepared Statements</strong> ou ORMs (como Hibernate, Sequelize, etc.).</li>
+<li><strong>Escapar Entradas</strong>: Sanitizar dados com bibliotecas apropriadas.</li>
+<li><strong>Validação de Entrada</strong>: Aceitar apenas formatos esperados.</li>
+<li><strong>Monitorar o Banco de Dados</strong>: Use ferramentas de auditoria para detectar consultas suspeitas.</li>
+<li><strong>Implemente a Defesa em Profundidade</strong>: Combine várias camadas de proteção.</li>
+</ol>
+<p>Esses exemplos mostram o impacto potencial e como corrigir vulnerabilidades de SQL Injection.</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

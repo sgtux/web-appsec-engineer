@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Certifications on Web AppSec Engineer</title>
+    <link>/certifications/</link>
+    <description>Recent content in Certifications on Web AppSec Engineer</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 08 Oct 2024 09:03:20 -0800</lastBuildDate>
+    <atom:link href="/certifications/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Certificação CAP o que preciso saber ?</title>
+      <link>/certifications/cap/</link>
+      <pubDate>Tue, 08 Oct 2024 09:03:20 -0800</pubDate>
+      <guid>/certifications/cap/</guid>
+      <description>&lt;h1 id=&#34;certified-appsec-practitioner-cap&#34;&gt;Certified AppSec Practitioner (CAP)&lt;/h1&gt;&#xA;&lt;h2 id=&#34;the-secops-group&#34;&gt;The SecOps Group&lt;/h2&gt;&#xA;&lt;p&gt;Link da certificação: &lt;a href=&#34;https://secops.group/product/certified-application-security-practitioner/&#34;&gt;https://secops.group/product/certified-application-security-practitioner/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Tópicos abordados:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Input Validation Mechanisms&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Blacklisting&lt;/li&gt;&#xA;&lt;li&gt;Whitelisting&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;/vulnerabilities/xss&#34;&gt;Cross-Site Scripting&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;/vulnerabilities/sql-injection&#34;&gt;SQL Injection&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;XML External Entity Attack&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Cross-Site Request Forgery&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Encoding, Encryption and Hashing&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Authentication related Vulnerabilities&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Brute force Attacks&lt;/li&gt;&#xA;&lt;li&gt;Password Storage and Password Policy&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Understanding of OWASP Top 10 Vulnerabilities&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Security Best Practices and Hardening Mechanisms.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Same Origin Policy&lt;/li&gt;&#xA;&lt;li&gt;Security Headers.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;TLS security&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;TLS Certificate Misconfiguration&lt;/li&gt;&#xA;&lt;li&gt;Symmetric and Asymmetric Ciphers&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Server-Side Request Forgery&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
